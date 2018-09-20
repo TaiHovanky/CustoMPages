@@ -7,8 +7,8 @@ const getPtData = () => {
 
 };
 
-export const onError = (err) => {
-    console.log('error', err);
+export const onError = () => {
+    console.log('error');
     return;
 }
 
@@ -39,5 +39,7 @@ export const onReady = (smart) => {
         setTimeout(function() {
             console.log('pt', pt, 'obv', obv);
         }, 5000)
+    } else {
+        onError();
     }
 };
