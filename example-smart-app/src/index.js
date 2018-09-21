@@ -20,9 +20,11 @@ const App = () => {
         console.log('smart pt in .then', pt);
     });
     const fhirResults = async () => {
+        console.log('running fhirResults');
         const data = await FHIR.oauth2.ready(onReady, onError);
         console.log('data in await-----', data);
-    } 
+    }
+    fhirResults();
     console.log('fhir results', fhirResults);
     return (
         <div>
