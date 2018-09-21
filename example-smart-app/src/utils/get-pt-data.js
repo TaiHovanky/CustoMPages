@@ -35,10 +35,11 @@ export const onReady = (smart) => {
             console.log('obv data in async await', obvData);
             return obvData;
         } 
-
-        setTimeout(function() {
-            console.log('pt', pt, 'obv', obv);
-        }, 5000)
+        pt();
+        obv();
+        // setTimeout(function() {
+        //     console.log('pt', pt, 'obv', obv);
+        // }, 5000)
     } else {
         onError();
     }
