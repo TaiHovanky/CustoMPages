@@ -35,10 +35,7 @@ class App extends React.Component {
             // console.log('data in await-----', data);
             const onReadyData = await onReady(smart);
             console.log('on ready data', onReadyData);
-            return {
-                onReadyData,
-                data
-            };
+            return onReadyData;
         }
         // fhirResults();
         console.log('fhir results', fhirResults());
