@@ -39,22 +39,22 @@ export const onReady = (smart) => {
         }
         // const dataPt = pt();
         // const dataObv = obv();
-        return pt();
-        // const getData = async () => {
-        //     console.log('about to getdata');
-        //     const dataPt = await pt();
-        //     const dataObv = await obv();
+        // return pt();
+        const getData = async () => {
+            console.log('about to getdata');
+            const dataPt = await pt();
+            const dataObv = await obv();
 
-        //     return {
-        //         dataPt,
-        //         dataObv
-        //     };
-        // }
+            return {
+                dataPt,
+                dataObv
+            };
+        }
 
-        // return getData().then(data => {
-        //     console.log('then data ==========', data);
-        //     return data;
-        // });
+        return getData().then(data => {
+            console.log('then data ==========', data);
+            return data;
+        });
 
     } else {
         onError();
