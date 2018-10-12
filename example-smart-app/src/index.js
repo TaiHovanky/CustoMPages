@@ -6,35 +6,50 @@ import { Card, CardTitle } from 'react-md';
 import './style.scss';
 console.log('hello world');
 
-const App = () => {
-    console.log('fhir=======', FHIR);
-    const demo = {
-        serviceUrl: "https://r2.smarthealthit.org",
-        patientId: "smart-1137192"
-    };
-    console.log('demo-----', demo);
-    var smart = FHIR.client(demo),
-    pt = smart.patient;
+class App extends React.Component {
+    constructor(props) {
+        super(props);
 
-// Create a patient banner by fetching + rendering demographics
-    smart.patient.read().then(function(pt) {
-        console.log('smart pt in .then', pt);
-    });
-    const fhirResults = async () => {
-        console.log('running fhirResults');
-        const data = await FHIR.oauth2.ready(onReady(), onError);
-        console.log('data in await-----', data);
+        this.state = {
+
+        }
     }
-    fhirResults();
-    console.log('fhir results', fhirResults);
-    return (
-        <div>
-            <MyComponent />
-            <Card>
-                <CardTitle title="patient data" />
-            </Card>
-        </div>
-    );
+
+    componentDidMount() {
+        console.log('fhir=======', FHIR);
+        const demo = {
+            serviceUrl: "https://r2.smarthealthit.org",
+            patientId: "smart-1137192"
+        };
+        console.log('demo-----', demo);
+        var smart = FHIR.client(demo),
+        pt = smart.patient;
+
+        // Create a patient banner by fetching + rendering demographics
+        smart.patient.read().then(function(pt) {
+            console.log('smart pt in .then', pt);
+        });
+        const fhirResults = async () => {
+            console.log('running fhirResults');
+            const data = await FHIR.oauth2.ready(onReady, onError);
+            console.log('data in await-----', data);
+            const onReadyData = await onReady();
+            console.log('on ready data', onReadyData);
+        }
+        fhirResults();
+        console.log('fhir results', fhirResults);
+    }
+
+    render() {
+        return (
+            <div>
+                <MyComponent />
+                <Card>
+                    <CardTitle title="patient data" />
+                </Card>
+            </div>
+        );
+    }
 }
 
 render(<App />, document.getElementById('root'));
