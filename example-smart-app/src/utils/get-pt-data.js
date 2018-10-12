@@ -36,7 +36,7 @@ export const onReady = (smart) => {
             return obvData;
         }
         const dataPt = pt();
-        const dataObv = obv();
+        // const dataObv = obv();
 
         return dataPt;
     } else {
