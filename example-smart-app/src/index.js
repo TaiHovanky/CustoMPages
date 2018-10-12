@@ -16,7 +16,6 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        console.log('fhir=======', FHIR);
         const demo = {
             serviceUrl: "https://r2.smarthealthit.org",
             patientId: "smart-1137192"
