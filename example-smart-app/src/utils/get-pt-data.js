@@ -42,8 +42,8 @@ export const onReady = (smart) => {
         // return pt();
         // const getData = async () => {
         //     console.log('about to getdata');
-            const dataPt = pt();
-            const dataObv = obv();
+            const dataPt = pt().then(data => data);
+            const dataObv = obv().then(data => data);
 
             return {
                 dataPt,
