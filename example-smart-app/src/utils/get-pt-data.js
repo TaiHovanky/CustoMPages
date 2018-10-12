@@ -34,12 +34,13 @@ export const onReady = (smart) => {
             });
             console.log('obv data in async await', obvData);
             return obvData;
-        } 
-        pt();
-        obv();
-        // setTimeout(function() {
-        //     console.log('pt', pt, 'obv', obv);
-        // }, 5000)
+        }
+        const allData = {
+            pt: pt(),
+            obv: obv()
+        }
+
+        return allData;
     } else {
         onError();
     }
