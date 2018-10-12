@@ -2,7 +2,8 @@ import React from 'react';
 import { render} from 'react-dom';
 import MyComponent from './my-component';
 import { onError, onReady } from './utils/get-pt-data';
-
+import { Card, CardTitle } from 'react-md';
+import './style.scss';
 console.log('hello world');
 
 const App = () => {
@@ -21,7 +22,7 @@ const App = () => {
     });
     const fhirResults = async () => {
         console.log('running fhirResults');
-        const data = await FHIR.oauth2.ready(onReady, onError);
+        const data = await FHIR.oauth2.ready(onReady(), onError);
         console.log('data in await-----', data);
     }
     fhirResults();
@@ -29,6 +30,9 @@ const App = () => {
     return (
         <div>
             <MyComponent />
+            <Card>
+                <CardTitle title="patient data" />
+            </Card>
         </div>
     );
 }
