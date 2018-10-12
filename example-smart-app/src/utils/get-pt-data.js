@@ -41,6 +41,7 @@ export const onReady = (smart) => {
         // const dataObv = obv();
 
         const getData = async () => {
+            console.log('about to getdata');
             const dataPt = await pt();
             const dataObv = await obv();
 
