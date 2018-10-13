@@ -7,7 +7,11 @@ import {
 
 const PatientInfoCard = props => (
     <Card>
-        <CardTitle title={props.name} />
+        <CardTitle
+            title={
+                `${props.name ? props.name.family[0] : ''}, ${props.name ? props.name.given[0] : ''}`
+            }
+        />
         <CardText>
             <p>{props.patientId}</p>
             <p>{props.birthDate}</p>
