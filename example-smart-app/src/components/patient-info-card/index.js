@@ -10,6 +10,7 @@ const PatientInfoCard = props => (
         <CardTitle title={props.name} />
         <CardText>
             <p>{props.patientId}</p>
+            <p>{props.birthDate}</p>
             <p>{props.gender}</p>
         </CardText>
     </Card>

@@ -1,17 +1,21 @@
+// Vendors
 import React from 'react';
 import { render} from 'react-dom';
 import MyComponent from './my-component';
 import { onError, onReady } from './utils/get-pt-data';
 import { Card, CardTitle } from 'react-md';
+
+// Components
+import PatientContactCard from './components/patient-contact-card';
+import PatientInfoCard from './components/patient-info-card';
 import './style.scss';
-console.log('hello world');
 
 class App extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-
+            data: null
         }
     }
 
@@ -29,24 +33,43 @@ class App extends React.Component {
             console.log('smart pt in .then', pt);
         });
         const fhirResults = async () => {
-            console.log('running fhirResults');
+            console.log('running fhirResults', this);
             const data = await FHIR.oauth2.ready(onReady, onError);
             // console.log('data in await-----', data);
             const onReadyData = await onReady(smart);
             console.log('on ready data', onReadyData);
-            return onReadyData;
+            this.setState({ data: onReadyData });
+            // return onReadyData;
         }
-        // fhirResults();
-        console.log('fhir results', fhirResults());
+        fhirResults();
+        // console.log('fhir results', fhirResults());
     }
 
     render() {
         return (
             <div>
                 <MyComponent />
-                <Card>
-                    <CardTitle title="patient data" />
-                </Card>
+                <PatientInfoCard
+                    birthDate={(this.state.data && this.state.data.dataPt)
+                        ? this.state.data.dataPt.birthDate
+                        : ''
+                    }
+                    gender={(this.state.data && this.state.data.dataPt)
+                        ? this.state.data.dataPt.gender
+                        : ''
+                    }
+                    name={(this.state.data && this.state.data.dataPt)
+                        ? this.state.data.dataPt.name[0]
+                        : ''
+                    }
+
+                />
+                <PatientContactCard
+                    telecom={(this.state.data && this.state.data.dataPt)
+                        ? this.state.data.dataPt.telecom
+                        : []
+                    }
+                />
             </div>
         );
     }

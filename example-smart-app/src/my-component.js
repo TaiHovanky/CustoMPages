@@ -1,6 +1,6 @@
 import React from 'react';
 
 const MyComponent = () => (
-    <h1>Hello from My Component</h1>
+    <h1>Observation MPage</h1>
 );
 export default MyComponent;
