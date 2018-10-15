@@ -27,20 +27,23 @@ class App extends React.Component {
 
         var smart = FHIR.client(demo),
         pt = smart.patient;
-        console.log('smart', smart, 'pt', pt, 'fhir', FHIR);
+        // console.log('smart', smart, 'pt', pt, 'fhir', FHIR);
         // Create a patient banner by fetching + rendering demographics
         // smart.patient.read().then(function(pt) {
         //     console.log('smart pt in .then', pt);
         // });
-        const fhirResults = async () => {
-            const data = await FHIR.oauth2.ready(onReady, onError);
-            // console.log('data in await-----', data);
-            const onReadyData = await onReady(smart, (patientData) => {
-                console.log('patient data in callback---------', patientData);
-                this.setState({
-                    data: patientData
-                });
+        const callback = (patientData) => {
+            console.log('patient data in callback---------', patientData);
+            this.setState({
+                data: patientData
             });
+        };
+        const fhirResults = async () => {
+            const data = await FHIR.oauth2.ready(() => {
+                onReady(smart, callback);
+            }, onError);
+            // console.log('data in await-----', data);
+            const onReadyData = await onReady(smart);
             // console.log('on ready data', onReadyData);
             // this.setState({ data: onReadyData });
             // return onReadyData;
