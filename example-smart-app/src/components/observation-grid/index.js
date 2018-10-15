@@ -27,7 +27,7 @@ const ObservationTable = ({ observations }) => (
                 <TableColumn>{dataItem.code.text}</TableColumn>
                 <TableColumn>{dataItem.effectiveDateTime}</TableColumn>
                 <TableColumn>{dataItem.interpretation.text}</TableColumn>
-                <TableColumn>{dataItem.referenceRange.text}</TableColumn>
+                <TableColumn>{dataItem.referenceRange[0].text}</TableColumn>
                 <TableColumn>{`${dataItem.valueQuantity.value} ${dataItem.valueQuantity.unit}`}</TableColumn>
                 </TableRow>
             ))}
