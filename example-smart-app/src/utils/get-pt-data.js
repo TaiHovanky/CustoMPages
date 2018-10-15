@@ -64,10 +64,11 @@ export const onReady = (smart) => {
             };
         }
 
-        return getData().then(data => {
-            console.log('then data ==========', data);
-            return data;
-        });
+        // return getData().then(data => {
+        //     console.log('then data ==========', data);
+        //     return data;
+        // });
+        return Promise.resolve(getData());
 
     } else {
         onError();
