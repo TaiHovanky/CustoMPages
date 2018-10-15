@@ -24,10 +24,10 @@ class App extends React.Component {
             serviceUrl: "https://r2.smarthealthit.org"
             // patientId: "smart-1137192"
         };
-        console.log('demo-----', demo);
+
         var smart = FHIR.client(demo),
         pt = smart.patient;
-
+        console.log('smart', smart, 'pt', pt, 'fhir', FHIR);
         // Create a patient banner by fetching + rendering demographics
         smart.patient.read().then(function(pt) {
             console.log('smart pt in .then', pt);
