@@ -35,9 +35,14 @@ class App extends React.Component {
         const fhirResults = async () => {
             const data = await FHIR.oauth2.ready(onReady, onError);
             // console.log('data in await-----', data);
-            const onReadyData = await onReady(smart);
-            console.log('on ready data', onReadyData);
-            this.setState({ data: onReadyData });
+            const onReadyData = await onReady(smart, (patientData) => {
+                console.log('patient data in callback---------', patientData);
+                this.setState({
+                    data: patientData
+                });
+            });
+            // console.log('on ready data', onReadyData);
+            // this.setState({ data: onReadyData });
             // return onReadyData;
         }
         fhirResults();

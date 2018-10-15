@@ -1,5 +1,3 @@
-import { setTimeout } from "timers";
-
 const getPtData = () => {
     const ptDataPromise = new Promise((resolve, reject) => {
         resolve(data);
@@ -12,8 +10,8 @@ export const onError = () => {
     return;
 }
 
-export const onReady = (smart) => {
-    console.log('smart', smart);
+export const onReady = (smart, callback) => {
+    console.log('smart', smart, 'callback', callback);
     if (smart.hasOwnProperty('patient')) {
         let patient = smart.patient;
         const pt = async () => {
@@ -63,10 +61,10 @@ export const onReady = (smart) => {
                 dataObv
             };
         }
-        console.log('getdata()', getData());
+        // console.log('getdata()', getData());
         return getData().then(data => {
             console.log('then data ==========', data);
-            return Promise.resolve(data);
+            callback(data);
         });
 
     } else {
