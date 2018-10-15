@@ -6,6 +6,7 @@ import { onError, onReady } from './utils/get-pt-data';
 import { Card, CardTitle } from 'react-md';
 
 // Components
+import ObservationTable from './components/observation-grid';
 import PatientContactCard from './components/patient-contact-card';
 import PatientInfoCard from './components/patient-info-card';
 import './style.scss';
@@ -43,7 +44,7 @@ class App extends React.Component {
     }
 
     render() {
-        if (this.state.data && this.state.data.dataPt) {
+        if (this.state.data && this.state.data.dataPt && this.state.data.dataObv) {
             const {
                 birthDate,
                 gender,
@@ -51,6 +52,7 @@ class App extends React.Component {
                 name,
                 telecom
             } = this.state.data.dataPt;
+            const { dataObv } = this.state.data;
             return (
                 <div>
                     <MyComponent />
@@ -63,6 +65,7 @@ class App extends React.Component {
                     <PatientContactCard
                         telecom={telecom}
                     />
+                    <ObservationTable observations={dataObv} />
                 </div>
             );
         }

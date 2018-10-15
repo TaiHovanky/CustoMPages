@@ -1,3 +1,4 @@
+// Vendors
 import React from 'react';
 import {
     Card,
@@ -13,9 +14,9 @@ const PatientInfoCard = props => (
             }
         />
         <CardText>
-            <p>{props.id}</p>
-            <p>{props.birthDate}</p>
-            <p>{props.gender}</p>
+            <p>MRN: {props.id}</p>
+            <p>Birthdate: {props.birthDate}</p>
+            <p>Gender: {props.gender}</p>
         </CardText>
     </Card>
 );
