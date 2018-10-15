@@ -63,13 +63,11 @@ export const onReady = (smart) => {
                 dataObv
             };
         }
-
-        // return getData().then(data => {
-        //     console.log('then data ==========', data);
-        //     return data;
-        // });
-        console.log('all data------------', Promise.resolve(getData()));
-        return Promise.resolve(getData());
+        console.log('getdata()', getData());
+        return getData().then(data => {
+            console.log('then data ==========', data);
+            return Promise.resolve(data);
+        });
 
     } else {
         onError();
