@@ -39,7 +39,7 @@ class App extends React.Component {
             });
         };
         const fhirResults = async () => {
-            const data = await FHIR.oauth2.ready(() => {
+            const data = await FHIR.oauth2.ready((smart) => {
                 onReady(smart, callback);
             }, onError);
             // console.log('data in await-----', data);
