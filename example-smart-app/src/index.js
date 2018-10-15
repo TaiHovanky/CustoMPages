@@ -29,9 +29,9 @@ class App extends React.Component {
         pt = smart.patient;
         console.log('smart', smart, 'pt', pt, 'fhir', FHIR);
         // Create a patient banner by fetching + rendering demographics
-        smart.patient.read().then(function(pt) {
-            console.log('smart pt in .then', pt);
-        });
+        // smart.patient.read().then(function(pt) {
+        //     console.log('smart pt in .then', pt);
+        // });
         const fhirResults = async () => {
             console.log('running fhirResults', this);
             const data = await FHIR.oauth2.ready(onReady, onError);
