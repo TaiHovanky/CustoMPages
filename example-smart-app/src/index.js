@@ -53,6 +53,7 @@ class App extends React.Component {
                 telecom
             } = this.state.data.dataPt;
             const { dataObv } = this.state.data;
+            console.log('data obv', dataObv)
             return (
                 <div>
                     <MyComponent />

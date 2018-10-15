@@ -23,12 +23,12 @@ const ObservationTable = ({ observations }) => (
         <TableBody>
             {observations.map((dataItem, i) => (
                 <TableRow key={i}>
-                <TableColumn>{dataItem.category.text}</TableColumn>
-                <TableColumn>{dataItem.code.text}</TableColumn>
-                <TableColumn>{dataItem.effectiveDateTime}</TableColumn>
-                <TableColumn>{dataItem.interpretation.text}</TableColumn>
-                <TableColumn>{dataItem.referenceRange[0].text}</TableColumn>
-                <TableColumn>{`${dataItem.valueQuantity.value} ${dataItem.valueQuantity.unit}`}</TableColumn>
+                <TableColumn>{dataItem.category ? dataItem.category.text : ''}</TableColumn>
+                <TableColumn>{dataItem.code ? dataItem.code.text : ''}</TableColumn>
+                <TableColumn>{dataItem.effectiveDateTime || ''}</TableColumn>
+                <TableColumn>{dataItem.interpretation ? dataItem.interpretation.text : ''}</TableColumn>
+                <TableColumn>{dataItem.referenceRange ? dataItem.referenceRange[0].text : ''}</TableColumn>
+                <TableColumn>{dataItem.valueQuantity ? `${dataItem.valueQuantity.value} ${dataItem.valueQuantity.unit}` : ''}</TableColumn>
                 </TableRow>
             ))}
         </TableBody>
