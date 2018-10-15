@@ -68,7 +68,9 @@ export const onReady = (smart) => {
         //     console.log('then data ==========', data);
         //     return data;
         // });
-        return Promise.resolve(getData());
+        const allData = Promise.resolve(getData());
+        console.log('all data------------', allData);
+        return allData;
 
     } else {
         onError();

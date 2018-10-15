@@ -33,8 +33,7 @@ class App extends React.Component {
         //     console.log('smart pt in .then', pt);
         // });
         const fhirResults = async () => {
-            console.log('running fhirResults', this);
-            const data = await FHIR.oauth2.ready(onReady, onError);
+            // const data = await FHIR.oauth2.ready(onReady, onError);
             // console.log('data in await-----', data);
             const onReadyData = await onReady(smart);
             console.log('on ready data', onReadyData);
