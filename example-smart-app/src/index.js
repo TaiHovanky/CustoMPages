@@ -27,13 +27,8 @@ class App extends React.Component {
 
         var smart = FHIR.client(demo),
         pt = smart.patient;
-        // console.log('smart', smart, 'pt', pt, 'fhir', FHIR);
         // Create a patient banner by fetching + rendering demographics
-        // smart.patient.read().then(function(pt) {
-        //     console.log('smart pt in .then', pt);
-        // });
         const callback = (patientData) => {
-            console.log('patient data in callback---------', patientData);
             this.setState({
                 data: patientData
             });
@@ -42,43 +37,37 @@ class App extends React.Component {
             const data = await FHIR.oauth2.ready((smart) => {
                 onReady(smart, callback);
             }, onError);
-            // console.log('data in await-----', data);
-            const onReadyData = await onReady(smart);
-            // console.log('on ready data', onReadyData);
-            // this.setState({ data: onReadyData });
-            // return onReadyData;
+            // const onReadyData = await onReady(smart);
         }
         fhirResults();
-        // console.log('fhir results', fhirResults());
     }
 
     render() {
-        return (
-            <div>
-                <MyComponent />
-                <PatientInfoCard
-                    birthDate={(this.state.data && this.state.data.dataPt)
-                        ? this.state.data.dataPt.birthDate
-                        : ''
-                    }
-                    gender={(this.state.data && this.state.data.dataPt)
-                        ? this.state.data.dataPt.gender
-                        : ''
-                    }
-                    name={(this.state.data && this.state.data.dataPt)
-                        ? this.state.data.dataPt.name[0]
-                        : ''
-                    }
+        if (this.state.data && this.state.data.dataPt) {
+            const {
+                birthDate,
+                gender,
+                id,
+                name,
+                telecom
+            } = this.state.data.dataPt;
+            return (
+                <div>
+                    <MyComponent />
+                    <PatientInfoCard
+                        birthDate={birthDate}
+                        gender={gender}
+                        id={id}
+                        name={name[0]}
+                    />
+                    <PatientContactCard
+                        telecom={telecom}
+                    />
+                </div>
+            );
+        }
 
-                />
-                <PatientContactCard
-                    telecom={(this.state.data && this.state.data.dataPt)
-                        ? this.state.data.dataPt.telecom
-                        : []
-                    }
-                />
-            </div>
-        );
+        return <MyComponent />;
     }
 }
 

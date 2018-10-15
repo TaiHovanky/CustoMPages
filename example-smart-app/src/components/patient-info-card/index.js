@@ -13,7 +13,7 @@ const PatientInfoCard = props => (
             }
         />
         <CardText>
-            <p>{props.patientId}</p>
+            <p>{props.id}</p>
             <p>{props.birthDate}</p>
             <p>{props.gender}</p>
         </CardText>
