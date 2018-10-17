@@ -6,7 +6,7 @@ import { onError, onReady } from './utils/get-pt-data';
 import { Card, CardTitle } from 'react-md';
 
 // Components
-import ObservationTable from './components/observation-grid';
+import ObservationTable from './components/observation-table';
 import PatientContactCard from './components/patient-contact-card';
 import PatientInfoCard from './components/patient-info-card';
 import './style.scss';
