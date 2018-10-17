@@ -14,9 +14,9 @@ const PatientContactCard = ({ address, telecom }) => (
         <CardText>
             <List>
                 <ListItem primaryText={address && address.length > 0 ? `${address[0].line} ${address[0].city}, ${address[0].state}` : '' } />
-                {telecom.map(contact => (
-                    <ListItem primaryText={`${contact.system} ${contact.value}`} />
-                ))}
+                {telecom && telecom.length > 0 ? telecom.map(contact => (
+                    <ListItem primaryText={`${contact.system} - ${contact.value}`} />
+                )) : null}
             </List>
         </CardText>
     </Card>
