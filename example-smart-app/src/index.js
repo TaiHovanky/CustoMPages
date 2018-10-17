@@ -9,6 +9,7 @@ import { Card, CardTitle } from 'react-md';
 import ObservationTable from './components/observation-table';
 import PatientContactCard from './components/patient-contact-card';
 import PatientInfoCard from './components/patient-info-card';
+import ContactsTable from './components/contacts-table';
 import './style.scss';
 
 class App extends React.Component {
@@ -50,6 +51,7 @@ class App extends React.Component {
                 birthDate,
                 careProvider,
                 communication,
+                contact,
                 gender,
                 id,
                 name,
@@ -73,6 +75,7 @@ class App extends React.Component {
                             address={address}
                             telecom={telecom}
                         />
+                        <ContactsTable contact={contact} />
                     </div>
                     <ObservationTable observations={dataObv} />
                 </div>
