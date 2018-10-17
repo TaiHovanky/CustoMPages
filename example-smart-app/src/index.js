@@ -46,7 +46,10 @@ class App extends React.Component {
     render() {
         if (this.state.data && this.state.data.dataPt && this.state.data.dataObv) {
             const {
+                address,
                 birthDate,
+                careProvider,
+                communication,
                 gender,
                 id,
                 name,
@@ -60,11 +63,14 @@ class App extends React.Component {
                     <div id="patient-info">
                         <PatientInfoCard
                             birthDate={birthDate}
+                            careProvider={careProvider}
+                            communication={communication}
                             gender={gender}
                             id={id}
                             name={name[0]}
                         />
                         <PatientContactCard
+                            address={address}
                             telecom={telecom}
                         />
                     </div>

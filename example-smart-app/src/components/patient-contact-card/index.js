@@ -8,12 +8,13 @@ import {
     ListItem
 } from 'react-md';
 
-const PatientContactCard = props => (
+const PatientContactCard = ({ address, telecom }) => (
     <Card>
         <CardTitle title="Contact Info" />
         <CardText>
             <List>
-                {props.telecom.map(contact => (
+                <ListItem primaryText={address && address.length > 1 ? address[0].text : '' } />
+                {telecom.map(contact => (
                     <ListItem primaryText={`${contact.system} ${contact.value}`} />
                 ))}
             </List>
