@@ -57,15 +57,17 @@ class App extends React.Component {
             return (
                 <div>
                     <MyComponent />
-                    <PatientInfoCard
-                        birthDate={birthDate}
-                        gender={gender}
-                        id={id}
-                        name={name[0]}
-                    />
-                    <PatientContactCard
-                        telecom={telecom}
-                    />
+                    <div id="patient-info">
+                        <PatientInfoCard
+                            birthDate={birthDate}
+                            gender={gender}
+                            id={id}
+                            name={name[0]}
+                        />
+                        <PatientContactCard
+                            telecom={telecom}
+                        />
+                    </div>
                     <ObservationTable observations={dataObv} />
                 </div>
             );
