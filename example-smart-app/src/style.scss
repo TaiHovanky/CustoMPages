@@ -1,3 +1,19 @@
 @import '~react-md/src/scss/react-md';
 
 @include react-md-everything;
+
+.md-card-title {
+    background-color: #0D94D2;
+
+    .md-text {
+        color: #fff;
+    }
+}
+
+.md-table-header {
+    background-color: #7BC043;
+
+    .md-text--secondary {
+        color: #fff;
+    }
+}
