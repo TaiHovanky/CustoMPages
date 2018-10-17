@@ -11,7 +11,7 @@ import {
 } from 'react-md';
 
 const ContactsTable = ({ contact }) => (
-    <Card>
+    <Card id="contacts-table">
         <CardTitle title="Patient Contacts" />
         <DataTable>
             <TableHeader>

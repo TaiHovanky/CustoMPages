@@ -21,4 +21,9 @@
 #patient-info {
     display: flex;
     flex-direction: row;
+    margin-bottom: 1.5rem
+}
+
+#patient-info-card, #patient-contact-card {
+    margin-right: 1.5rem;
 }
