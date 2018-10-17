@@ -9,11 +9,11 @@ import {
 } from 'react-md';
 
 const PatientContactCard = ({ address, telecom }) => (
-    <Card>
+    <Card id="patient-contact-card">
         <CardTitle title="Contact Info" />
         <CardText>
             <List>
-                <ListItem primaryText={address && address.length > 1 ? address[0].text : '' } />
+                <ListItem primaryText={address && address.length > 0 ? `${address[0].line} ${address[0].city}, ${address[0].state}` : '' } />
                 {telecom.map(contact => (
                     <ListItem primaryText={`${contact.system} ${contact.value}`} />
                 ))}
