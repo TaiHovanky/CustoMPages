@@ -1,7 +1,6 @@
 // Vendors
 import React from 'react';
 import { render} from 'react-dom';
-import MyComponent from './my-component';
 import { onError, onReady } from './utils/get-pt-data';
 import { Card, CardTitle } from 'react-md';
 
@@ -38,7 +37,6 @@ class App extends React.Component {
             const data = await FHIR.oauth2.ready((smart) => {
                 onReady(smart, callback);
             }, onError);
-            // const onReadyData = await onReady(smart);
         }
         fhirResults();
     }
@@ -50,16 +48,17 @@ class App extends React.Component {
                 birthDate,
                 careProvider,
                 communication,
+                contact,
                 gender,
                 id,
                 name,
                 telecom
             } = this.state.data.dataPt;
             const { dataObv } = this.state.data;
-            console.log('data obv', dataObv)
+
             return (
                 <div>
-                    <MyComponent />
+                    <h1>Observation MPage</h1>
                     <div id="patient-info">
                         <PatientInfoCard
                             birthDate={birthDate}
@@ -79,7 +78,7 @@ class App extends React.Component {
             );
         }
 
-        return <MyComponent />;
+        return <div>Loading observation data</div>;
     }
 }
 

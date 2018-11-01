@@ -15,13 +15,10 @@ export const onReady = (smart, callback) => {
     if (smart.hasOwnProperty('patient')) {
         let patient = smart.patient;
         const pt = async () => {
-            console.log('running pt');
             const ptData = await patient.read();
-            console.log('pt data in async await', ptData);
             return ptData;
         }
         const obv = async () => {
-            console.log('running obv');
             const obvData = await smart.patient.api.fetchAll({
                 type: 'Observation',
                 query: {
@@ -32,38 +29,18 @@ export const onReady = (smart, callback) => {
                     }
                 }
             });
-            console.log('obv data in async await', obvData);
             return obvData;
         }
-        // const dataPt = pt();
-        // const dataObv = obv();
-        // return pt();
-        // const getData = async () => {
-        //     console.log('about to getdata');
-        //     const dataPt = await pt();
-        //     const dataObv = await obv();
 
-        //     return {
-        //         dataPt,
-        //         dataObv
-        //     };
-        // }
-
-        // return getData().then(data => {
-        //     console.log('then data ==========', data);
-        //     return data;
-        // });
         const getData = async () => {
-            console.log('about to getdata');
             let [ dataPt, dataObv ] = await Promise.all([ pt(), obv() ]);
             return {
                 dataPt,
                 dataObv
             };
         }
-        // console.log('getdata()', getData());
+
         return getData().then(data => {
-            console.log('then data ==========', data);
             callback(data);
         });
 
