@@ -1,20 +1,20 @@
 @import '~react-md/src/scss/react-md';
-
+@import './assets/scss/variables.scss';
 @include react-md-everything;
 
 .md-card-title {
-    background-color: #0D94D2;
+    background-color: $color-soft-blue;
 
     .md-text {
-        color: #fff;
+        color: $color-white;
     }
 }
 
 .md-table-header {
-    background-color: #7BC043;
+    background-color: $color-green;
 
     .md-text--secondary {
-        color: #fff;
+        color: $color-white;
     }
 }
 
