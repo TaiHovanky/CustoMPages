@@ -22,11 +22,11 @@ const PatientInfoCard = ({
             }
         />
         <CardText>
-            <p>Encounter: {props.id}</p>
-            <p>Birthdate: {props.birthDate}</p>
-            <p>Gender: {props.gender}</p>
-            <p>Language: {props.communication.length > 0 ? props.communication[0].language.text : ''}</p>
-            <p>Provider: {props.careProvider.length > 0 ? `${props.careProvider[0].reference} - ${props.careProvider[0].display}` : ''}</p>
+            <p>Encounter: {id}</p>
+            <p>Birthdate: {birthDate}</p>
+            <p>Gender: {gender}</p>
+            <p>Language: {communication.length > 0 ? communication[0].language.text : ''}</p>
+            <p>Provider: {careProvider.length > 0 ? `${careProvider[0].reference} - ${careProvider[0].display}` : ''}</p>
         </CardText>
     </Card>
 );
