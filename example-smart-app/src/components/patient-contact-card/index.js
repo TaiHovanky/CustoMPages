@@ -10,7 +10,7 @@ import {
 import PropTypes from 'prop-types';
 
 const PatientContactCard = ({ address, telecom }) => (
-    <Card>
+    <Card id="patient-contact-card">
         <CardTitle title="Contact Info" />
         <CardText>
             <List>

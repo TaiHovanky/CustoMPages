@@ -7,11 +7,18 @@ import {
 } from 'react-md';
 import PropTypes from 'prop-types';
 
-const PatientInfoCard = props => (
-    <Card>
+const PatientInfoCard = ({
+    birthDate,
+    careProvider,
+    communication,
+    gender,
+    id,
+    name
+}) => (
+    <Card id="patient-info-card">
         <CardTitle
             title={
-                `${props.name ? props.name.family[0] : ''}, ${props.name ? props.name.given[0] : ''}`
+                `${name ? name.family[0] : ''}, ${name ? name.given[0] : ''}`
             }
         />
         <CardText>

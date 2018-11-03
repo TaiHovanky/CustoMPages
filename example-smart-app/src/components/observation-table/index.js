@@ -26,7 +26,7 @@ const ObservationTable = ({ observations }) => (
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {observations.map((dataItem, i) => (
+                {observations && observations.length > 0 ? observations.map((dataItem, i) => (
                     <TableRow key={i}>
                     <TableColumn>{dataItem.category ? dataItem.category.text : ''}</TableColumn>
                     <TableColumn>{dataItem.code ? dataItem.code.text : ''}</TableColumn>
@@ -35,7 +35,7 @@ const ObservationTable = ({ observations }) => (
                     <TableColumn>{dataItem.referenceRange && dataItem.referenceRange.length > 0 ? dataItem.referenceRange[0].text : ''}</TableColumn>
                     <TableColumn>{dataItem.valueQuantity ? `${dataItem.valueQuantity.value} ${dataItem.valueQuantity.unit}` : ''}</TableColumn>
                     </TableRow>
-                ))}
+                )) : null}
             </TableBody>
         </DataTable>
     </Card>
