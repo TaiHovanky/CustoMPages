@@ -9,6 +9,7 @@ import {
     TableRow,
     TableColumn
 } from 'react-md';
+import PropTypes from 'prop-types';
 
 const ObservationTable = ({ observations }) => (
     <Card>
@@ -39,5 +40,13 @@ const ObservationTable = ({ observations }) => (
         </DataTable>
     </Card>
 );
+
+ObservationTable.propTypes = {
+    observations: PropTypes.array
+};
+
+ObservationTable.defaultProps = {
+    observations: []
+};
 
 export default ObservationTable;

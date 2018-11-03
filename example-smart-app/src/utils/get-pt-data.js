@@ -11,7 +11,6 @@ export const onError = () => {
 }
 
 export const onReady = (smart, callback) => {
-    console.log('smart', smart, 'callback', callback);
     if (smart.hasOwnProperty('patient')) {
         let patient = smart.patient;
         const pt = async () => {
