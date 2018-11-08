@@ -35,9 +35,9 @@ export const onReady = (smart, callback) => {
 
         const meds = async () => {
             const medsData = await smart.patient.api.fetchAll(
-                { type: "MedicationOrder" }
+                { type: "MedicationOrder" },
+                ["MedicationOrder.medicationReference"]
             );
-            console.log('medsdata-----', medsData);
             return medsData;
         }
 
