@@ -34,10 +34,10 @@ export const onReady = (smart, callback) => {
         };
 
         const meds = async () => {
-            const medsData = await smart.patient.api.fetchAllWithReferences(
-                { type: "MedicationOrder" },
-                ["MedicationOrder.medicationReference"]
+            const medsData = await smart.patient.api.fetchAll(
+                { type: "MedicationOrder" }
             );
+            console.log('medsdata-----', medsData);
             return medsData;
         }
 
