@@ -5,22 +5,56 @@ import {
     CardTitle,
     CardText
 } from 'react-md';
+import PropTypes from 'prop-types';
 
-const PatientInfoCard = props => (
-    <Card>
+const PatientInfoCard = ({
+    birthDate,
+    careProvider,
+    communication,
+    gender,
+    id,
+    name
+}) => (
+    <Card id="patient-info-card">
         <CardTitle
             title={
-                `${props.name ? props.name.family[0] : ''}, ${props.name ? props.name.given[0] : ''}`
+                `${name ? name.family[0] : ''}, ${name ? name.given[0] : ''}`
             }
         />
         <CardText>
-            <p>Encounter: {props.id}</p>
-            <p>Birthdate: {props.birthDate}</p>
-            <p>Gender: {props.gender}</p>
-            <p>Language: {props.communication && props.communication.length > 0 ? props.communication[0].language.text : ''}</p>
-            <p>Provider: {props.careProvider && props.careProvider.length > 0 ? `${props.careProvider[0].reference} - ${props.careProvider[0].display}` : ''}</p>
+            <p>Encounter: {id}</p>
+            <p>Birthdate: {birthDate}</p>
+            <p>Gender: {gender}</p>
+            <p>Language: {
+                communication.length > 0
+                    ? communication[0].language.text
+                    : ''
+                }
+            </p>
+            <p>Provider: {
+                careProvider.length > 0
+                    ? `${careProvider[0].reference} - ${careProvider[0].display}`
+                    : ''
+                }
+            </p>
         </CardText>
     </Card>
 );
+
+PatientInfoCard.propTypes = {
+    birthDate: PropTypes.string,
+    careProvider: PropTypes.array,
+    communication: PropTypes.array,
+    gender: PropTypes.string,
+    id: PropTypes.number
+};
+
+PatientInfoCard.defaultProps = {
+    birthDate: '',
+    careProvider: [],
+    communication: [],
+    gender: '',
+    id: null
+}
 
 export default PatientInfoCard;

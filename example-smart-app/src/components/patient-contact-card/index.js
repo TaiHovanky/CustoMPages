@@ -7,13 +7,19 @@ import {
     List,
     ListItem
 } from 'react-md';
+import PropTypes from 'prop-types';
 
 const PatientContactCard = ({ address, telecom }) => (
-    <Card>
+    <Card id="patient-contact-card">
         <CardTitle title="Contact Info" />
         <CardText>
             <List>
-                <ListItem primaryText={address && address.length > 0 ? `${address[0].text}` : '' } />
+                <ListItem primaryText={
+                    address && address.length > 0
+                        ? `${address[0].text}`
+                        : '' 
+                    }
+                />
                 {telecom.map(contact => (
                     <ListItem primaryText={`${contact.system} ${contact.value}`} />
                 ))}
@@ -21,5 +27,15 @@ const PatientContactCard = ({ address, telecom }) => (
         </CardText>
     </Card>
 );
+
+PatientContactCard.propTypes = {
+    address: PropTypes.array,
+    telecom: PropTypes.array
+};
+
+PatientContactCard.defaultProps = {
+    address: [],
+    telecom: []
+}
 
 export default PatientContactCard;

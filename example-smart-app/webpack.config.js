@@ -1,5 +1,9 @@
 const webpack = require('webpack');
 const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const cleanWebpackPlugin = new CleanWebpackPlugin(
+    path.resolve(__dirname, 'src/bundle.js')
+);
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
     template: path.join(__dirname, "./src/index.html"),
@@ -32,12 +36,21 @@ module.exports = {
                 use: [
                     'style-loader',
                     'css-loader',
-                    'sass-loader'
+                    {
+                        loader: 'sass-loader',
+                        // options: {
+                        //     data: '@import variables',
+                        //     includePaths: [
+                        //         path.resolve(__dirname, 'src/assets/scss')
+                        //     ]
+                        // }
+                    }
                 ]
             }
         ]
     },
     plugins: [
+        cleanWebpackPlugin,
         htmlWebpackPlugin
     ],
     devServer: {

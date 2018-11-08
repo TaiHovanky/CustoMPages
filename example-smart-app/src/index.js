@@ -5,6 +5,8 @@ import { onError, onReady } from './utils/get-pt-data';
 import { Card, CardTitle } from 'react-md';
 
 // Components
+import ContactsTable from './components/contacts-table';
+import MedicationList from './components/medication-list';
 import ObservationTable from './components/observation-table';
 import PatientContactCard from './components/patient-contact-card';
 import PatientInfoCard from './components/patient-info-card';
@@ -31,7 +33,7 @@ class App extends React.Component {
         const callback = (patientData) => {
             this.setState({
                 data: patientData
-            });
+            }, () => { console.log('this state after set', this.state.data)});
         };
         const fhirResults = async () => {
             const data = await FHIR.oauth2.ready((smart) => {
@@ -42,7 +44,8 @@ class App extends React.Component {
     }
 
     render() {
-        if (this.state.data && this.state.data.dataPt && this.state.data.dataObv) {
+        const { data } = this.state;
+        if (data && data.dataPt && data.dataObv) {
             const {
                 address,
                 birthDate,
@@ -53,13 +56,13 @@ class App extends React.Component {
                 id,
                 name,
                 telecom
-            } = this.state.data.dataPt;
-            const { dataObv } = this.state.data;
+            } = data.dataPt;
+            const { dataObv, dataMeds } = data;
 
             return (
-                <div>
-                    <h1>Observation MPage</h1>
-                    <div id="patient-info">
+                <div id="patient-info">
+                    <h1 id="patient-info__header">Observation MPage</h1>
+                    <div id="patient-info__cards">
                         <PatientInfoCard
                             birthDate={birthDate}
                             careProvider={careProvider}
@@ -72,7 +75,9 @@ class App extends React.Component {
                             address={address}
                             telecom={telecom}
                         />
+                        <ContactsTable contact={contact} />
                     </div>
+                    <MedicationList medications={dataMeds} />
                     <ObservationTable observations={dataObv} />
                 </div>
             );
