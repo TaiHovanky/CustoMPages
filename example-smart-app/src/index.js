@@ -32,7 +32,7 @@ class App extends React.Component {
         const callback = (patientData) => {
             this.setState({
                 data: patientData
-            });
+            }, () => { console.log('this state after set', this.state.data)});
         };
         const fhirResults = async () => {
             const data = await FHIR.oauth2.ready((smart) => {

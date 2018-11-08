@@ -13,10 +13,12 @@ export const onError = () => {
 export const onReady = (smart, callback) => {
     if (smart.hasOwnProperty('patient')) {
         let patient = smart.patient;
+
         const pt = async () => {
             const ptData = await patient.read();
             return ptData;
-        }
+        };
+
         const obv = async () => {
             const obvData = await smart.patient.api.fetchAll({
                 type: 'Observation',
@@ -29,15 +31,24 @@ export const onReady = (smart, callback) => {
                 }
             });
             return obvData;
+        };
+
+        const meds = async () => {
+            const medsData = await smart.patient.api.fetchAllWithReferences(
+                { type: "MedicationOrder" },
+                ["MedicationOrder.medicationReference"]
+            );
+            return medsData;
         }
 
         const getData = async () => {
-            let [ dataPt, dataObv ] = await Promise.all([ pt(), obv() ]);
+            let [ dataPt, dataObv, dataMeds ] = await Promise.all([ pt(), obv(), meds() ]);
             return {
                 dataPt,
-                dataObv
+                dataObv,
+                dataMeds
             };
-        }
+        };
 
         return getData().then(data => {
             callback(data);
