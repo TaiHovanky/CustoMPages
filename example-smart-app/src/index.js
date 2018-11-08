@@ -43,7 +43,8 @@ class App extends React.Component {
     }
 
     render() {
-        if (this.state.data && this.state.data.dataPt && this.state.data.dataObv) {
+        const { data } = this.state;
+        if (data && data.dataPt && data.dataObv) {
             const {
                 address,
                 birthDate,
@@ -54,13 +55,13 @@ class App extends React.Component {
                 id,
                 name,
                 telecom
-            } = this.state.data.dataPt;
-            const { dataObv } = this.state.data;
+            } = data.dataPt;
+            const { dataObv } = data;
 
             return (
-                <div>
-                    <h1>Observation MPage</h1>
-                    <div id="patient-info">
+                <div id="patient-info">
+                    <h1 id="patient-info__header">Observation MPage</h1>
+                    <div id="patient-info__cards">
                         <PatientInfoCard
                             birthDate={birthDate}
                             careProvider={careProvider}

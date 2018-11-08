@@ -28,12 +28,37 @@ const ObservationTable = ({ observations }) => (
             <TableBody>
                 {observations && observations.length > 0 ? observations.map((dataItem, i) => (
                     <TableRow key={i}>
-                    <TableColumn>{dataItem.category ? dataItem.category.text : ''}</TableColumn>
-                    <TableColumn>{dataItem.code ? dataItem.code.text : ''}</TableColumn>
+                    <TableColumn>{
+                        dataItem.category
+                            ? dataItem.category.text
+                            : ''
+                        }
+                    </TableColumn>
+                    <TableColumn>{
+                        dataItem.code
+                            ? dataItem.code.text
+                            : ''
+                        }
+                    </TableColumn>
                     <TableColumn>{dataItem.effectiveDateTime || ''}</TableColumn>
-                    <TableColumn>{dataItem.interpretation ? dataItem.interpretation.text : ''}</TableColumn>
-                    <TableColumn>{dataItem.referenceRange && dataItem.referenceRange.length > 0 ? dataItem.referenceRange[0].text : ''}</TableColumn>
-                    <TableColumn>{dataItem.valueQuantity ? `${dataItem.valueQuantity.value} ${dataItem.valueQuantity.unit}` : ''}</TableColumn>
+                    <TableColumn>{
+                        dataItem.interpretation
+                            ? dataItem.interpretation.text
+                            : ''
+                        }
+                    </TableColumn>
+                    <TableColumn>{
+                        dataItem.referenceRange && dataItem.referenceRange.length > 0
+                            ? dataItem.referenceRange[0].text
+                            : ''
+                        }
+                    </TableColumn>
+                    <TableColumn>{
+                        dataItem.valueQuantity
+                            ? `${dataItem.valueQuantity.value} ${dataItem.valueQuantity.unit}`
+                            : ''
+                        }
+                    </TableColumn>
                     </TableRow>
                 )) : null}
             </TableBody>

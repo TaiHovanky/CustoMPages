@@ -26,11 +26,36 @@ const ContactsTable = ({ contact }) => (
             <TableBody>
                 {contact && contact.length > 0 ? contact.map((dataItem, i) => (
                     <TableRow key={i}>
-                    <TableColumn>{dataItem.name ? dataItem.name.text : ''}</TableColumn>
-                    <TableColumn>{dataItem.gender ? dataItem.gender : ''}</TableColumn>
-                    <TableColumn>{dataItem.relationship && dataItem.relationship.length > 0 ? dataItem.relationship[0].text : ''}</TableColumn>
-                    <TableColumn>{dataItem.telecom && dataItem.telecom.length > 0 ? `${dataItem.telecom[0].system}, ${dataItem.telecom[0].use}` : ''}</TableColumn>
-                    <TableColumn>{dataItem.telecom && dataItem.telecom.length > 0 ? dataItem.telecom[0].value : ''}</TableColumn>
+                    <TableColumn>{
+                        dataItem.name
+                            ? dataItem.name.text 
+                            : ''
+                        }
+                    </TableColumn>
+                    <TableColumn>{
+                        dataItem.gender
+                            ? dataItem.gender
+                            : ''
+                        }
+                    </TableColumn>
+                    <TableColumn>{
+                        dataItem.relationship && dataItem.relationship.length > 0
+                            ? dataItem.relationship[0].text
+                            : ''
+                        }
+                    </TableColumn>
+                    <TableColumn>{
+                        dataItem.telecom && dataItem.telecom.length > 0
+                            ? `${dataItem.telecom[0].system}, ${dataItem.telecom[0].use}`
+                            : ''
+                        }
+                    </TableColumn>
+                    <TableColumn>{
+                        dataItem.telecom && dataItem.telecom.length > 0
+                            ? dataItem.telecom[0].value
+                            : ''
+                        }
+                    </TableColumn>
                     </TableRow>
                 )) : null}
             </TableBody>
