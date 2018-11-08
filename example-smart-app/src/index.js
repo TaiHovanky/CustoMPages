@@ -5,10 +5,11 @@ import { onError, onReady } from './utils/get-pt-data';
 import { Card, CardTitle } from 'react-md';
 
 // Components
+import ContactsTable from './components/contacts-table';
+import MedicationList from './components/medication-list';
 import ObservationTable from './components/observation-table';
 import PatientContactCard from './components/patient-contact-card';
 import PatientInfoCard from './components/patient-info-card';
-import ContactsTable from './components/contacts-table';
 import './style.scss';
 
 class App extends React.Component {
@@ -56,7 +57,7 @@ class App extends React.Component {
                 name,
                 telecom
             } = data.dataPt;
-            const { dataObv } = data;
+            const { dataObv, dataMeds } = data;
 
             return (
                 <div id="patient-info">
@@ -76,6 +77,7 @@ class App extends React.Component {
                         />
                         <ContactsTable contact={contact} />
                     </div>
+                    <MedicationList medications={dataMeds} />
                     <ObservationTable observations={dataObv} />
                 </div>
             );
