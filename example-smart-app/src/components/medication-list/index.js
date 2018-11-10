@@ -8,10 +8,13 @@ import {
 } from 'react-md';
 
 const MedicationList = ({ medications }) => (
-    <Card>
-        <CardTitle title="Medication Orders" />
+    <Card id="medications">
+        <CardTitle
+            id="medications__title"
+            title="Medication Orders"
+        />
 
-        <List>
+        <List id="medications__list">
             {medications.map((medication, index) => {
                 let {
                     dosageInstruction,

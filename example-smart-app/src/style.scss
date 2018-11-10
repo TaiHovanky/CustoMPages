@@ -27,3 +27,13 @@
 #patient-info-card, #patient-contact-card {
     margin-right: 1.5rem;
 }
+
+#medications {
+    height: 300px;
+    overflow-y: scroll;
+}
+
+#observations {
+    height: 500px;
+    overflow: scroll;
+}
