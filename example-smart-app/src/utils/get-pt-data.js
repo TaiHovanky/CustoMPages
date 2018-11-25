@@ -5,10 +5,10 @@ const getPtData = () => {
 
 };
 
-export const onError = () => {
-    console.log('error');
+export const onError = (err) => {
+    console.log('error', err);
     return;
-}
+};
 
 export const onReady = (smart, callback) => {
     if (smart.hasOwnProperty('patient')) {

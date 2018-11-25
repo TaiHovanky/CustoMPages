@@ -1,5 +1,6 @@
 // Vendors
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
     Card,
     CardTitle,
@@ -9,12 +10,14 @@ import {
     TableRow,
     TableColumn
 } from 'react-md';
-import PropTypes from 'prop-types';
 
 const ObservationTable = ({ observations }) => (
-    <Card>
-        <CardTitle title="Patient Observation Data" />
-        <DataTable>
+    <Card id="observations">
+        <CardTitle
+            id="observations__title"
+            title="Patient Observation Data"
+        />
+        <DataTable id="observations__table">
             <TableHeader>
                 <TableRow>
                     <TableColumn>Category</TableColumn>

@@ -36,15 +36,7 @@ module.exports = {
                 use: [
                     'style-loader',
                     'css-loader',
-                    {
-                        loader: 'sass-loader',
-                        // options: {
-                        //     data: '@import variables',
-                        //     includePaths: [
-                        //         path.resolve(__dirname, 'src/assets/scss')
-                        //     ]
-                        // }
-                    }
+                    'sass-loader'
                 ]
             }
         ]

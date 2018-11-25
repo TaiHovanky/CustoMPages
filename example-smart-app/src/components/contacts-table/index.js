@@ -4,10 +4,10 @@ import {
     Card,
     CardTitle,
     DataTable,
-    TableHeader,
     TableBody,
-    TableRow,
-    TableColumn
+    TableColumn,
+    TableHeader,
+    TableRow
 } from 'react-md';
 
 const ContactsTable = ({ contact }) => (
